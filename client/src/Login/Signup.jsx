@@ -67,7 +67,9 @@ className='border p-3 rounded-lg ' id='email' onChange={handleChange}
 className='border p-3 rounded-lg ' id='password'
 onChange={handleChange}
 />
-<button disabled={loading} className='sign-up-button'
+<button disabled={loading} 
+className='bg-green-700 text-white p-3 rounded-lg uppercase hover:opacity-95'
+
 >{loading?'Loading...':'Sign-Up'}</button>
 
 <OAuth/>
