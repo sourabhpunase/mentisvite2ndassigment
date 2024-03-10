@@ -29,17 +29,18 @@ app.listen(3000,()=>{
     console.log('server is running')
 })
 
-app.use(express.static(path.join(__dirname, '/client/dist')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
-})
 
 //router for auth,listing,and user
 
 app.use('/api/user',userRouter);
 app.use('/api/auth',authrouter);
 app.use('/api/listings',listingRouter);
+app.use(express.static(path.join(__dirname, '/client/dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+})
+
 
 //response
 app.use((err,req,res,next)=>{
