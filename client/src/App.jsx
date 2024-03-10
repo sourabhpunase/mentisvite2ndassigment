@@ -10,8 +10,10 @@ import Header from './components/Header'
 import PrivateRoute from './Login/PrivateRoute'
 import Updatelisting from './dashboard/Updatelisting'
 import Footer from './components/Footer'
+import { useSelector } from 'react-redux'
 
 export default function App() {
+  const { currentUser } = useSelector((state) => state.user);
 
   return (
     <div>
@@ -25,8 +27,11 @@ export default function App() {
    <BrowserRouter>
    <Header/>
    <Routes>
+    {currentUser?
 
 <Route path='/' element={<MainDashboard/>}/>
+
+:<Route path='/' element={<SignIn/>}/>}
 <Route path='/sign-in' element={<SignIn/>}/>
 <Route path='/sign-up'  element={<Signup/>}/>
 <Route path='/update-listing/:listingId' element={<Updatelisting/>}/>

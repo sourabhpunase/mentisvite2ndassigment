@@ -58,8 +58,8 @@ dispatch(signInFailure(error.message))
 
 <form className='flex flex-col gap-4 ' onSubmit={handleSubmit}>
 
-<input type='email ' placeholder=' email...'
-className='border p-3 rounded-lg ' id='email' onChange={handleChange}
+<input type='text ' placeholder=' username...'
+className='border p-3 rounded-lg ' id='username' onChange={handleChange}
 />
 
 <input type='password' placeholder=' password'

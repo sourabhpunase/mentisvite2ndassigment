@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 function ListingTable({ listings,setUserListings}) {
 
-
-
   const handleListingDelete = async (listingId) => {
     try {
       const res = await fetch(`/api/listings/delete/${listingId}`, {
@@ -41,6 +39,7 @@ function ListingTable({ listings,setUserListings}) {
         </thead>
         <tbody>
           {listings.map(listing => (
+          
             <tr key={listing._id}>
               <td>{listing.name}</td>
               <td>{listing.email}</td>

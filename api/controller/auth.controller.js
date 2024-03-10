@@ -21,9 +21,9 @@ catch(error){
 
 //for signin api
 export  const signin =async(req,res,next)=>{
-    const {email,password}=req.body;
+    const {username,password}=req.body;
     try{
-const validUser= await User.findOne({email:email})
+const validUser= await User.findOne({username:username})
 if(!validUser)
 return next(errorHandler(404,'user not found'))
 const validpass=bcryptjs.compareSync(password,validUser.password);

@@ -2,8 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import ListingTable from './ListingTable';
 import styles from './dashboard.module.css'; // Import your CSS module
 import axios from 'axios';
-import Header from '../components/Header';
-import CreateListing from './Createlisting';
+
 import { NavLink } from 'react-router-dom';
 import Loader from '../components/loader/Loader';
 
@@ -71,7 +70,7 @@ const searchRef=useRef(null);
   return (
     
     <div className={styles.wrapper}>
- <div className={styles.container}>
+
 
 
 
@@ -94,8 +93,6 @@ const searchRef=useRef(null);
           >
             Database 3
           </button>
-
-</div>
 </div>
      
      <div className={styles.right}>
