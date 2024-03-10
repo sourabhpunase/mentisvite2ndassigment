@@ -1,3 +1,18 @@
+### hoisted link
+https://mentisvite2ndassigment.onrender.com/
+
+
+##Tech used
+.MERN(Mongo db, Express js, React, node js)
+.Redux toolkit
+.tailwind css
+.redux-persist
+.Firestore Auth
+.Mongoose
+.react-toastify
+
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
