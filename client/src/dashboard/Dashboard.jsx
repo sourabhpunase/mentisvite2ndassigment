@@ -121,7 +121,7 @@ const searchRef=useRef(null);
        <button className={styles.create}>
           <NavLink to={'/create'}>
             <span className='font-extrabold text-3xl mr-2'>
-              +</span>Add a new Listing 
+              +</span>Add Data 
             
           
         </NavLink>
