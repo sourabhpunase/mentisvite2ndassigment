@@ -29,6 +29,7 @@ A live demo of the application can be accessed [here](https://mentisvite2ndassig
 - Encryption: JWT tokens and hashing are used for encryption and privacy.
 - Cookies: Cookies are used for storing user web tokens, providing a secure authentication mechanism.
 - Profile Picture Upload: Users can upload their profile picture for customization.
+- Responsiveness for mobile view
 
 ## Filter and Search
 - Ascending and Descending Order: Users can filter entries in ascending or descending order based on name, email, and phone.
