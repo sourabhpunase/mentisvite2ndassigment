@@ -9,7 +9,6 @@ import CreateListing from './dashboard/Createlisting'
 import Header from './components/Header'
 import PrivateRoute from './Login/PrivateRoute'
 import Updatelisting from './dashboard/Updatelisting'
-import Footer from './components/Footer'
 import { useSelector } from 'react-redux'
 
 export default function App() {
