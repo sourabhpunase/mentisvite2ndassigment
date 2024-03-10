@@ -28,7 +28,7 @@ const userSchema=new mongoose.Schema(
 ,
             avatar:{
  type:String,
-     default :"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqH3cEbybFfapQUefsHayoFDKzwtOR8WKt-Q&usqp=CAU"           
+     default :"https://images.pexels.com/photos/1486861/pexels-photo-1486861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"           
             }
 
 },{timestamps:true}    );
