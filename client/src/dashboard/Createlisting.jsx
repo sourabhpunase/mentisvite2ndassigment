@@ -83,7 +83,7 @@ export default function CreateListing() {
       name: randomData[0].name,
       email: randomData[0].email,
       phone: randomData[0].phone,
-      database: '', // Assuming database is not changed when adding random entries
+      database: '', 
     });
   };
 
@@ -134,7 +134,7 @@ export default function CreateListing() {
             onChange={handleChange}
             value={formData.phone}
           />
-          {/* Add database selection field */}
+     
           <select
             className='border p-3 rounded-lg'
             id='database'

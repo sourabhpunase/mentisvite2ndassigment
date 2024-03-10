@@ -9,7 +9,7 @@ export default function Updatelisting() {
     name: '',
     email: '',
     phone: '',
-    database: '', // Add database field to form state
+    database: '',
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -109,7 +109,7 @@ const res= await fetch(`/api/listings/get/${listingId}`);
             onChange={handleChange}
             value={formData.phone}
           />
-          {/* Add database selection field */}
+        
           <select
             className='border p-3 rounded-lg'
             id='database'
