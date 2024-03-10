@@ -13,7 +13,7 @@ router.post('/update/:id', verifyToken, updateListing);
 
 router.get('/get/:id', getListing);
 
-// router.get('/listings/:database', getListingByDatabase);
 
 router.get('/:database/get', getListingsByDatabase);
 export default router;
+//listing router for accessing and performing CRUD operations

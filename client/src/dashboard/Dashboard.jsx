@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ListingTable from './ListingTable';
-import CreateListing from './Createlisting';
+import styles from './dashboard.module.css'; // Import your CSS module
 import axios from 'axios';
+import Header from '../components/Header';
+import CreateListing from './Createlisting';
+import { NavLink } from 'react-router-dom';
+import Loader from '../components/loader/Loader';
 
 function Dashboard() {
   const [activeDatabase, setActiveDatabase] = useState('database1');
@@ -11,11 +15,18 @@ function Dashboard() {
   const [sortOrder, setSortOrder] = useState('asc');
   const [searchTerm, setSearchTerm] = useState('');
   const [userListings, setUserListings] = useState([]);
+const searchRef=useRef(null);
 
   useEffect(() => {
+  
     fetchData();
-  }, [activeDatabase, sortField, sortOrder, searchTerm,userListings]);
+  }, [activeDatabase, sortField, sortOrder, searchTerm, userListings]);
 
+  useEffect(()=>{
+    if(searchRef.current){
+      searchRef.current.focus();
+     }
+  })
   const fetchData = async () => {
     setLoading(true);
     try {
@@ -51,57 +62,112 @@ function Dashboard() {
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
+  if(loading){
+    return(
+      <Loader/>
+    )
+  }
 
   return (
-    <div>
-      <div className="tabs">
-        <button
-          className={activeDatabase === 'database1' ? 'active' : ''}
-          onClick={() => handleTabChange('database1')}
-        >
-          Database 1
-        </button>
-        <button
-          className={activeDatabase === 'database2' ? 'active' : ''}
-          onClick={() => handleTabChange('database2')}
-        >
-          Database 2
-        </button>
-        <button
-          className={activeDatabase === 'database3' ? 'active' : ''}
-          onClick={() => handleTabChange('database3')}
-        >
-          Database 3
-        </button>
-      </div>
+    
+    <div className={styles.wrapper}>
+ <div className={styles.container}>
 
-      <input
-        type="text"
-        placeholder="Search..."
-        value={searchTerm}
-        onChange={handleSearch}
-      />
-        <button onClick={() => handleSort('name')}>
-        Sort by Name {sortField === 'name' && (sortOrder === 'asc' ? '▲' : '▼')}
-      </button>
-      <button onClick={() => handleSort('email')}>
-        Sort by Email {sortField === 'email' && (sortOrder === 'asc' ? '▲' : '▼')}
-      </button>
-      <button onClick={() => handleSort('phone')}>
-        Sort by Phone {sortField === 'phone' && (sortOrder === 'asc' ? '▲' : '▼')}
-      </button>
 
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <ListingTable listings={listings} handleSort={handleSort}
-        
-     setUserListings={setUserListings}
-     />
-      )}
 
+        <div className={styles.tabs}>
+          <button
+            className={`${activeDatabase === 'database1' ? styles.active : ''} ${styles.dash1}`}
+            onClick={() => handleTabChange('database1')}
+          >
+            Database 1
+          </button>
+          <button
+             className={`${activeDatabase === 'database2' ? styles.active : ''} ${styles.dash2}`}
+            onClick={() => handleTabChange('database2')}
+          >
+            Database 2
+          </button>
+          <button
+             className={`${activeDatabase === 'database3' ? styles.active : ''} ${styles.dash3}`}
+            onClick={() => handleTabChange('database3')}
+          >
+            Database 3
+          </button>
+
+</div>
+</div>
      
-    </div>
+     <div className={styles.right}>
+
+<div className={styles.search}>
+
+<label>
+
+<input
+  type="text"
+  required
+  placeholder="Search users..."
+  value={searchTerm}
+  ref={searchRef}
+  onChange={handleSearch}
+  className={styles.input}
+/>
+
+</label>
+</div>
+
+    
+
+
+       <div className={styles.filter}>
+       <button className={styles.create}>
+          <NavLink to={'/create'}>
+            <span className='font-extrabold text-3xl mr-2'>
+              +</span>Add a new Listing 
+            
+          
+        </NavLink>
+        </button>
+    
+        <button onClick={() => handleSort('name')} className={styles.button}>
+          Sort by Name{' '}
+          {sortField === 'name' && (sortOrder === 'asc' ? '▲' : '▼')}
+        </button>
+        <button onClick={() => handleSort('email')} className={styles.button}>
+          Sort by Email{' '}
+          {sortField === 'email' && (sortOrder === 'asc' ? '▲' : '▼')}
+        </button>
+        <button onClick={() => handleSort('phone')} className={styles.button}>
+          Sort by Phone{' '}
+          {sortField === 'phone' && (sortOrder === 'asc' ? '▲' : '▼')}
+        </button>
+    
+        
+
+        </div>
+
+        <div className={styles.table}>
+
+      
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+       <React.Suspense fallback={<Loader/>}>
+
+       
+          <ListingTable
+            listings={listings}
+            handleSort={handleSort}
+            setUserListings={setUserListings}
+          />
+          </React.Suspense>
+          
+
+        )}
+          </div>
+      </div>
+     </div>
   );
 }
 

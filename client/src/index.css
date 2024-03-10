@@ -3,15 +3,18 @@
 @tailwind utilities;
 
 body {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
-    line-height: 1.42em;
-    color:#A7A1AE;
 
-    -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #010105;
-  opacity: 0.9;
-  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #010105 60px ), repeating-linear-gradient( #04123055, #041230 );
- background-size: contain;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+
+  color:#A7A1AE;
+
+  -webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+background: rgba( 26, 36, 34, 0.9 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 7.5px );
+-webkit-backdrop-filter: blur( 7.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
 }

@@ -1,27 +1,34 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import MainDashboard from './dashboard/Dashboard'
-
+import {Helmet} from 'react-helmet'
 import Signup from './Login/Signup'
 import SignIn from './Login/Login'
-import Profile from './dashboard/Profile'
+import Profile from './components/Profile'
 import CreateListing from './dashboard/Createlisting'
 import Header from './components/Header'
-import PrivateRoute from './PrivateRoute'
+import PrivateRoute from './Login/PrivateRoute'
 import Updatelisting from './dashboard/Updatelisting'
-import Listing from './dashboard/Listing'
+import Footer from './components/Footer'
 
 export default function App() {
 
   return (
+    <div>
+
+
+    <Helmet>
+    <meta charSet="utf-8" />
+    <title>MANTIS EYE</title>
+    <meta name="description" content="second assigment of mantis " />
+  </Helmet>
    <BrowserRouter>
    <Header/>
-
    <Routes>
+
 <Route path='/' element={<MainDashboard/>}/>
 <Route path='/sign-in' element={<SignIn/>}/>
 <Route path='/sign-up'  element={<Signup/>}/>
-<Route path='/listing/:listingId' element={<Listing/>}/>
 <Route path='/update-listing/:listingId' element={<Updatelisting/>}/>
 
 <Route element={<PrivateRoute/>}>
@@ -32,7 +39,7 @@ export default function App() {
 
    </Routes>
    
-   
    </BrowserRouter>
+   </div>
   )
 }

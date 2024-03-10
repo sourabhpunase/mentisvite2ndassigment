@@ -9,3 +9,5 @@ router.post('/google',google);
 router.get('/signout',signout);
 
 export default router;
+
+//auth router to login, logout,also using google

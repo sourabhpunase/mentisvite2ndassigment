@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken'
 import { errorHandler } from "../utils/error.js";
 
 
+//for signout
 export const signup=async (req,res,next)=>{
 const {username,email,password}=req.body;
 const hashedPassword=bcryptjs.hashSync(password,10);
@@ -18,6 +19,7 @@ catch(error){
 }
 };
 
+//for signin api
 export  const signin =async(req,res,next)=>{
     const {email,password}=req.body;
     try{
@@ -39,6 +41,8 @@ res.cookie('access_token', token,{httpOnly:true}).status(200)
         next(error);
     }
 }
+
+// to use google using firebase
 export const google=async (req,res,next)=>{
 
 try {
@@ -74,6 +78,8 @@ catch(error){
 }
 
 }
+
+//signout using deleting cookie
 export const signout=async (req,res,next)=>{
 try{
     res.clearCookie('access_token');

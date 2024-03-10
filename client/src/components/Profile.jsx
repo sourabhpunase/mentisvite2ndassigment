@@ -17,6 +17,7 @@ import {
   deleteUserSuccess,
   signOutUserStart,
 } from '../redux/user/userSlice';
+
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 export default function Profile() {
@@ -35,6 +36,8 @@ export default function Profile() {
       handleFileUpload(file);
     }
   }, [file]);
+
+  //to upload or change profile  image which should be less than 2mb 
 
   const handleFileUpload = (file) => {
     const storage = getStorage(app);
@@ -60,10 +63,12 @@ export default function Profile() {
     );
   };
 
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
+  //using rexux toolkit to handlesubmit
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -88,6 +93,7 @@ export default function Profile() {
     }
   };
 
+  //delete using method type as delete
   const handleDeleteUser = async () => {
     try {
       dispatch(deleteUserStart());
@@ -104,7 +110,7 @@ export default function Profile() {
       dispatch(deleteUserFailure(error.message));
     }
   };
-
+//signout using deleting cookie
   const handleSignOut = async () => {
     try {
       dispatch(signOutUserStart());

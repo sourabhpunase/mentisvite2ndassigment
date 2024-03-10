@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
+import Loader from '../components/loader/Loader';
+import {toast} from 'react-toastify'
 export default function CreateListing() {
   const { currentUser } = useSelector((state) => state.user);
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ export default function CreateListing() {
     phone: '',
     database: '', // Add database field to form state
   });
+  //we will navigate on basis of database number
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -21,6 +23,7 @@ export default function CreateListing() {
     });
   };
 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -43,6 +46,8 @@ export default function CreateListing() {
       setLoading(false);
       if (data.success === false) {
         setError(data.message);
+        toast.error('please fill all the fileds')
+     
       } else {
         navigate('/');
       }
@@ -52,10 +57,17 @@ export default function CreateListing() {
     }
   };
 
+  if(loading){
+    return (
+      <Loader/>
+    )
+  }
   return (
-    <main className='p-3 max-w-4xl mx-auto'>
+    <main className='p-3 max-w-4xl mx-auto mt-16'>
       <h1 className='text-3xl font-semibold text-center my-7'>Create a Listing</h1>
+     
       <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-4'>
+      
         <div className='flex flex-col gap-4 flex-1'>
           <input
             type='text'

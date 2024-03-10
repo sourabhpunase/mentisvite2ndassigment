@@ -3,6 +3,7 @@ import Listing from '../models/listing.module.js';
 import { errorHandler } from '../utils/error.js';
 
 
+//creating new list
 export const createListing = async (req, res, next) => {
   try {
     const listing = await Listing.create(req.body);
@@ -12,6 +13,7 @@ export const createListing = async (req, res, next) => {
   }
 };
 
+//delete new list
 export const deleteListing = async (req, res, next) => {
   const listing = await Listing.findById(req.params.id);
 
@@ -19,9 +21,6 @@ export const deleteListing = async (req, res, next) => {
     return next(errorHandler(404, 'Listing not found!'));
   }
 
-  // if (req.user.id !== listing.userRef) {
-  //   return next(errorHandler(401, 'You can only delete your own listings!'));
-  // }
 
   try {
     await Listing.findByIdAndDelete(req.params.id);
@@ -31,14 +30,12 @@ export const deleteListing = async (req, res, next) => {
   }
 };
 
+//updating or editing existing list
 export const updateListing = async (req, res, next) => {
   const listing = await Listing.findById(req.params.id);
   if (!listing) {
     return next(errorHandler(404, 'Listing not found!'));
   }
-  // if (req.user.id !== listing.userRef) {
-  //   return next(errorHandler(401, 'You can only update your own listings!'));
-  // }
 
   try {
     const updatedListing = await Listing.findByIdAndUpdate(
@@ -52,6 +49,7 @@ export const updateListing = async (req, res, next) => {
   }
 };
 
+//to get individual list
 export const getListing = async (req, res, next) => {
   try {
     const listing = await Listing.findById(req.params.id);
@@ -64,6 +62,7 @@ export const getListing = async (req, res, next) => {
   }
 };
 
+//to get listing on basis of what database you  are currently
 export const getListingsByDatabase = async (req, res) => {
   try {
     const database = req.params.database;

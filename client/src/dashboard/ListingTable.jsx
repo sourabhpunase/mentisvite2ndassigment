@@ -1,12 +1,9 @@
 // src/ListingTable.js
 import React, { useEffect, useState } from 'react';
-import styles from './dashboar.module.css'
+import styles from './table.module.css'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 function ListingTable({ listings,setUserListings}) {
-  const { currentUser, loading, error } = useSelector((state) => state.user);
-
-  const dispatch = useDispatch();
 
 
 

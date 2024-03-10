@@ -31,6 +31,7 @@ const res= await fetch(`/api/listings/get/${listingId}`);
 }
     fetchListing();
  },[]);
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -38,6 +39,7 @@ const res= await fetch(`/api/listings/get/${listingId}`);
     });
   };
 
+  //to handle update
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

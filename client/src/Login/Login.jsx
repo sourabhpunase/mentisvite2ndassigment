@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-
+import {toast} from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link,useNavigate } from 'react-router-dom'
 import { signInFailure,signInStart,signInSuccess } from '../redux/user/userSlice'
-import OAuth from '../OAuth'
+import OAuth from './OAuth'
 export default function SignIn() {
   const [formData,setFormData]=useState({})
 const {loading,error}=useSelector((state)=>state.user)
@@ -40,7 +40,7 @@ const handleSubmit=async (e)=>{
     return ;
   }
 dispatch(signInSuccess(data));
-
+toast.success("login successfully")
   navigate('/')
 }
 catch(error){

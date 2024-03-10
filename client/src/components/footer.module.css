@@ -1,0 +1,73 @@
+/* Footer.css */
+/* Add custom styles here if needed */
+
+/* Footer container */
+.footer-container {
+    background-color: #333;
+    padding: 2rem 0;
+  }
+  
+  /* Center the content */
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+  
+  /* Address and Connect sections */
+  .footer-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Address and Connect section headings */
+  .section-title {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Address, Connect, and Links sections */
+  .footer-info, .footer-links {
+    margin-bottom: 1rem;
+  }
+  
+  /* Address */
+  .address {
+    color: #bbb;
+  }
+  
+  /* Social media icons */
+  .social-media {
+    display: flex;
+  }
+  
+  .social-icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+    color: #fff;
+  }
+  
+  /* Links */
+  .footer-links ul {
+    padding: 0;
+  }
+  
+  .footer-links li {
+    list-style-type: none;
+  }
+  
+  .footer-links a {
+    color: #bbb;
+    text-decoration: none;
+  }
+  
+  .footer-links a:hover {
+    color: #fff;
+  }
+  
+  /* Responsive adjustments */
+  @media (min-width: 768px) {
+    .footer-section {
+      flex-basis: 33.33%;
+    }
+  }
+  

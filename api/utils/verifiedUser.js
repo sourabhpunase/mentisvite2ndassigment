@@ -12,3 +12,4 @@ jwt.verify(token,process.env.JWT_SECRET,(err,user)=>{
     next();
 });
 };
+//check whether user is verified or not if not verified than cannot access some features
